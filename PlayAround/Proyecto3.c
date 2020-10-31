@@ -53,19 +53,20 @@ int main()
 	for (char i = 16; i > 0; i--)
 	{
 		unsigned short temp = datos.bitsParidad & (int)pow(2,(i-1));
+		//Imprime un bit de la cadena de bits de paridad. Si ese bit es 0, se imprime 0. Si no, se imprime 1.
 		printf("%hu", temp==0? 0: 1);
 		
 	}
 	return 0;
-};
+}
 void procedimiento(unsigned char caracter, struct Estructura * est) {
 	short count = 0;
-	for (short ind = 0; ind < 8; ind++){
+	for (short index = 0; index < 8; index++){
 		__asm {
 			mov cx, count    //move count into the cx register
 			mov al, cl       //move the least significant part of count  into AL, to save space since CX will get overwritten anyways
 			mov ah, caracter //move char into AH register
-			mov cx, ind      //move index into CX register
+			mov cx, index      //move index into CX register
 			shr ah, cl       //ShiftRight the character n times, where n=index
 			and ah, 1        //zero out everything but the least significant bit in the char
 			cmp ah, 1        //if(char last bit == 1)
