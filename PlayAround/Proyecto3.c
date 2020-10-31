@@ -7,7 +7,7 @@
 
 
 //Defino prototipo
-void procedimiento(char caracter, struct Estructura * est);
+void procedimiento(unsigned char caracter, unsigned short * bitsActualParidad);
 
 
 int main()
