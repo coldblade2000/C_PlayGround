@@ -2,7 +2,7 @@
 #include <math.h>
 //Visual Studio se queja si no uso escribo esta bandera
 #define _CRT_SECURE_NO_WARNINGS
-
+//Por Diego Granada 201922383
 
 struct Estructura {
 	unsigned short bitsParidad;
@@ -27,7 +27,7 @@ int main()
 
 	//NOTA: El ejemplo del enunciado tiene un CarriageReturn al final de "Hola", por lo cual asumo que es necesario. SI NO LO ES, BORRAR EL PROXIMO FOR-LOOOP
 	//Este for loop busca el caracter nulo, lo remplaza con un Carriage Return y hace que el proximo caracter sea el caracter nulo.
-	for (short i = 0; i < 17; i++)
+	/*for (short i = 0; i < 17; i++)
 	{
 		if (datos.cadena[i] == 0)
 		{
@@ -35,15 +35,14 @@ int main()
 			if (i < 16) datos.cadena[i + 1] = 0;
 			break;
 		}
-	}
+	}*/
 
 	//Ejecuta el procedimiento para cada caracter, ignora caracteres que son invalidos
 	for (char i = 16; i >= 0; i--)
 	{
 		if (datos.cadena[i] >= 0) {
 			procedimiento(datos.cadena[i], &datos);
-		}
-		else {
+		}else {
 			procedimiento(0, &datos);
 			
 		}
@@ -78,8 +77,7 @@ void procedimiento(unsigned char caracter, struct Estructura * est) {
 			mov count, cx   //move the count value back into the count variable in memory
 		}
 		/*
-		Este es el codigo en C correspondiente, solo que queria intentar lograrlo en Assembly. Si eso no se permitia, por favor considerar el
-		codigo dentro de este comentario en cambio
+		Este es el codigo en C correspondiente, solo que queria intentar lograrlo en Assembly
 		if ( ( (caracter>>ind) & 1) == 1) {
 			count++;
 		}*/
@@ -87,6 +85,7 @@ void procedimiento(unsigned char caracter, struct Estructura * est) {
 	count = count & 1;//gets the amount of zeroes and checks if its even or odd
 	short bitsParidad = est->bitsParidad;
 	//Aca solo sumo count a bitsDePartidad y roto a la derecha. Era mas facil con assembly, ya que con C me toca hacer dos shifts y despues una union... 
+	//Esto permite poner el bit de paridad en el digito mas significativo
 	__asm {
 		mov ax,bitsParidad
 		add ax, count
