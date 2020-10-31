@@ -22,7 +22,7 @@ int main()
 	printf("Por favor ingresa la cadena de numeros\n");
 	scanf("%s", input);
 	datos.bitsParidad = 0;
-	printf("This is the output: %s\n", input);
+	//printf("This is the output: %s\n", input);
 	memcpy(&datos.cadena, &input, 17);
 
 	//NOTA: El ejemplo del enunciado tiene un CarriageReturn al final de "Hola", por lo cual asumo que es necesario. SI NO LO ES, BORRAR EL PROXIMO FOR-LOOOP
@@ -46,7 +46,7 @@ int main()
 			procedimiento(0, &datos);
 			
 		}
-		printf("%hu \n", datos.bitsParidad);
+		//printf("%hu \n", datos.bitsParidad);
 	}
 
 	//Imprime el numero de resultado (que ya esta codificado bien en binario). Imprime bit por bit de mas a menos significante
